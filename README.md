@@ -6,12 +6,9 @@
 
 [Docker and Docker Compose](https://docs.docker.com/compose/) or [Node](https://nodejs.org/)
 
-## Setup
-
-Add the Google OAuth-token as *GOOGLE_CLIENT_ID* in *docker-compose.yml*-file.
-
 ## Running
 
+    export GOOGLE_CLIENT_ID=<your client id>
     docker-compose build && docker-compose up
 
 ## Running locally
