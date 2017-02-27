@@ -1,0 +1,36 @@
+version: '2'
+
+services:
+  db:
+    environment:
+      POSTGRES_DB: example
+      POSTGRES_PASSWORD: example
+      POSTGRES_USER: example
+    image: postgres:9.4
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+
+  backend:
+    build: backend
+    environment:
+      DATABASE_URL: postgres://example:example@db/example
+      GOOGLE_CLIENT_ID:
+    ports:
+      - 9000:9000
+    links:
+      - db
+
+  dev:
+    build: frontend
+    environment:
+      ENDPOINT: http://0.0.0.0:9000/api/
+      GOOGLE_CLIENT_ID:
+    volumes:
+      - ./frontend/src:/usr/src/app/src
+    ports:
+      - 8000:8000
+    links:
+      - backend
+
+volumes:
+  dbdata:

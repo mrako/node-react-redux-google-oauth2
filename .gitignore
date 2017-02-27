@@ -1,0 +1,14 @@
+# OSX
+.DS_Store
+
+# Node
+node_modules
+
+# Logs
+*.log
+
+# Test results
+results
+
+# React
+dist
